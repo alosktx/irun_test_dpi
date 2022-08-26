@@ -1,8 +1,8 @@
-import "DPI-C" function void Write(input bit[63:0] sim_time, input int type_h, input bit[543:0] data);
+import "DPI-C" function void Write(input bit[63:0] sim_time, input int type_h, input bit[127:0] data);
 
 module dpi #(
     parameter LANS=4,
-    parameter WIDTH='h044444
+    parameter WIDTH=279620
 )(
     input clk,
     input rst_n,

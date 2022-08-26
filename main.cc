@@ -9,19 +9,24 @@ int main(int argc, char const *argv[]) {
         std::cout << "open error!" << std::endl;
     }
     uint64_t time;
-    uint8_t type;
-    uint32_t *data;
+    uint32_t type;
+    uint32_t data[17];
 
-    ifs.read((char*)&time, sizeof(uint64_t));
-    ifs.read((char*)&type, sizeof(uint32_t));
+    // !ifs.eof()
+    while (ifs.peek() != EOF) {
+        ifs.read((char *)&time, sizeof(uint64_t));
+        ifs.read((char *)&type, sizeof(uint32_t));
 
-    if (type == 0 || type == 3) {
-        ifs.read((char*)data, 17 * sizeof(uint32_t));
-    } else {
-        ifs.read((char*)data, sizeof(uint32_t));
+        if (type == 0 || type == 3) {
+            ifs.read((char *)data, sizeof(uint32_t) * 4);
+            std::cout << "time:\t" << time << "\ttype:\t" << type << "\tdata:\t" << data[3] << data[2] << data[1] << data[0] << "\n";
+        } else {
+            ifs.read((char *)data, sizeof(uint32_t));
+            std::cout << "time:\t" << time << "\ttype:\t" << type << "\tdata:\t" << data[0] << "\n";
+        }
     }
-    std::cout << "time:\t" << time << "\ttype:\t" << (uint16_t)type << "\tdata:\t" << data[0] << "\n";
-    // std::cout << "time:\t" << time << "\ttype:\t" << (uint16_t)type << "\n";
+
+    ifs.close();
 
     return 0;
 }

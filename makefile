@@ -6,7 +6,7 @@ CXX_OBJS := $(CXX_SRCS:%.cc=%.o)
 OBJS := $(CXX_OBJS)
 
 .PHONY : all dpi.so run clean main
-all: dpi.so run
+all: dpi.so run main
 
 %.o : %.cc
 	$(CXX) $(CXX_FLAGS) -c -o $@ $<
@@ -15,10 +15,10 @@ dpi.so : $(OBJS)
 	$(CXX) $(LD_FLAGS) -o $@ $(OBJS)
 
 main:
-	g++ -o main main.cc
+	g++ -g -o main main.cc
 
 run:
-	irun -SV_LIB dpi.so -64bit top.sv 
+	irun -SV_LIB dpi.so +sv +nc64bit -access +rwc +nctimescale+1ns/1ps top.sv -gui
 
 clean:
 	rm -f *.o
@@ -27,3 +27,4 @@ clean:
 	rm -f irun.*
 	rm -f *.log
 	rm -f main
+	rm -rf INCA_libs
