@@ -12,7 +12,7 @@ module top ();
 
   dpi #(
       .LANS (4),
-      .WIDTH(279620)
+      .WIDTH('h044444)
   ) dpi_u (
       .clk  (clk),
       .rst_n(rst_n),

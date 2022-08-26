@@ -2,7 +2,7 @@ import "DPI-C" function void Write(input bit[63:0] sim_time, input int type_h, i
 
 module dpi #(
     parameter LANS=4,
-    parameter WIDTH=279620
+    parameter WIDTH='h044444
 )(
     input clk,
     input rst_n,

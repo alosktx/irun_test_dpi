@@ -1,0 +1,11 @@
+.vscode
+*.o
+*.d
+*.so
+irun.*
+*.log
+main
+INCA_libs
+.simvision
+waves.shm
+dpi.dat

@@ -28,3 +28,6 @@ clean:
 	rm -f *.log
 	rm -f main
 	rm -rf INCA_libs
+	rm -rf .simvision
+	rm -rf waves.shm
+	rm -rf dpi.dat
